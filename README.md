@@ -1,7 +1,7 @@
 # README Monte Carlo‑simulation of monomers- and polymers
 
 **Institution:** NTNU, Department of Physics  
-**Course:** TMA4320 Introduksjon til vitenskapelige beregninger
+**Course:** TMA4320 Introduksjon til vitenskapelige beregninger  
 **Semester:** Spring 2022  
 
 
