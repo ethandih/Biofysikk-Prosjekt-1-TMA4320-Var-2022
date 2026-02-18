@@ -1,23 +1,50 @@
-# README Monte Carlo‑simulering av monomerer- og polymerer
-TMA4320 Introduksjon til vitenskapelige beregninger (vår 2022)
-Ethan Dias, Kristian Narten, Bettina Due
+# README Monte Carlo‑simulation of monomers- and polymers
 
-Dette prosjektet studerer hvordan elektrostatiske interaksjoner og multivalens påvirker dannelsen av membranløse organeller i celler. Slike organeller, f.eks. nukleoler, dannes gjennom væske‑væske faseseparasjon, hvor biopolymerer spontant aggregerer til dråpe-liknende strukturer.
-Med utgangspunkt i prosjektbeskrivelsen fra NTNU (Institutt for fysikk, TMA4320), modellerer vi hvordan monomerer og polymerer av motsatt ladning organiserer seg i et todimensjonalt gitter ved hjelp av:
+**Course:** TMA4320 Introduksjon til vitenskapelige beregninger (NTNU)  
+**Semester:** Spring 2022  
+**Institution:** NTNU, Department of Physics  
 
-* Metropolis Monte Carlo (MCMC)
-* Coulomb-baserte interaksjoner
-* Periodiske randbetingelser
-* Numerisk modellering av rigid og fleksibel polymerbevegelse
+## Overview
+This repository contains a Monte Carlo (Metropolis) simulation project investigating how electrostatic interactions and polymer multivalency can drive liquid–liquid phase separation and the formation of membrane-less organelles (clusters/droplets) in cells.
 
-Målet er å undersøke hvordan parametere som temperatur, polymerlengde (multivalens L), fleksibilitet og systemstørrelse påvirker:
+In this simplified model, oppositely charged monomers/polymers move on a 2D periodic lattice (an `N × N` grid). Interactions are short-ranged, where only nearest-neighbor charge–charge interactions contribute to the energy. The system is evolved using the Metropolis algorithm, and clustering is quantified as a function of temperature and multivalency (polymer length).
 
-* Klyngedannelse (cluster formation)
-* Antall klynger
-* Energidynamikk
-* Faseseparasjonens styrke
+## What is implemented
+### 1) Monomer systems (L = 1)
+- Random initialization of `M` positive and `M` negative monomers on an `N × N` grid
+- Periodic boundary conditions (torus geometry)
+- Energy calculation using nearest-neighbor electrostatic interactions
+- Metropolis Monte Carlo simulation
+- Cluster detection (connected components on the lattice, 4-neighborhood)
+- Estimation of mean cluster size ⟨d⟩ as a function of temperature
 
+### 2) Polymer systems (L > 1)
+- Random initialization of `M` positive and `M` negative polymers, each with `L` monomers
+- Energy calculation excluding interactions within the same polymer
+- Two polymer move models:
+  - Rigid move: entire polymer attempts to move as a unit; move rejected on collision
+  - Medium flexibility move: rows/columns blocked by collisions stay; collision-free parts move
+- Polymer integrity check (reject move if polymer becomes “broken” / disconnected)
+- Large-scale simulations measuring:
+  - ⟨d⟩/L (mean cluster size normalized by multivalency)
+  - ⟨m⟩ (mean number of clusters; interpreted as number of organelles)
 
+## Model assumptions (simplifications)
+- Movement restricted to a discrete 2D grid
+- Nearest-neighbor only interactions (screening in aqueous solution)
+- No diagonal connectivity for clusters/polymers (4-neighborhood)
+- Polymers do not twist/rotate in 3D; movement is horizontal/vertical only
+- Parameter choices (e.g., grid spacing) are chosen for computational feasibility, not biological realism
+
+## Requirements
+- `Python 3`
+- `numpy`
+- `matplotlib`
+- `numba` (optional but strongly recommended for speed)
+
+Install dependencies:
+```bash
+pip install numpy matplotlib numba
 
 
 
