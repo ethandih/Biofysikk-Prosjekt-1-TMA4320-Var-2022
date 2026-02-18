@@ -1,8 +1,9 @@
 # README Monte Carlo‑simulation of monomers- and polymers
 
-**Course:** TMA4320 Introduksjon til vitenskapelige beregninger (NTNU)  
-**Semester:** Spring 2022  
 **Institution:** NTNU, Department of Physics  
+**Course:** TMA4320 Introduksjon til vitenskapelige beregninger
+**Semester:** Spring 2022  
+
 
 ## Overview
 This repository contains a Monte Carlo (Metropolis) simulation project investigating how electrostatic interactions and polymer multivalency can drive liquid–liquid phase separation and the formation of membrane-less organelles (clusters/droplets) in cells.
