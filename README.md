@@ -9,6 +9,20 @@ This repository contains a Monte Carlo (Metropolis) simulation project investiga
 
 In this simplified model, oppositely charged monomers/polymers move on a 2D periodic lattice (an `N × N` grid). Interactions are short-ranged, where only nearest-neighbor charge–charge interactions contribute to the energy. The system is evolved using the Metropolis algorithm, and clustering is quantified as a function of temperature and multivalency (polymer length).
 
+## What this repo demonstrates
+
+- Implementation of the Metropolis Monte Carlo algorithm (Markov Chain Monte Carlo)
+- Design of a discrete physical model with tunable parameters (temperature, interaction strength, system size)
+- Simulation of interacting systems on a 2D lattice with periodic boundary conditions
+- Energy-based state transitions using Boltzmann-weighted acceptance criteria
+- Recursive connected-component detection (cluster labeling)
+- Statistical estimation of equilibrium properties (mean cluster size and cluster count)
+- Analysis of system behavior under varying control parameters
+- Comparison of different dynamical models (rigid vs. flexible movement rules)
+- Performance optimization using Numba JIT compilation
+- Reproducible scientific visualization using NumPy and Matplotlib
+
+
 ## What is implemented
 ### 1) Monomer systems (L = 1)
 - Random initialization of `M` positive and `M` negative monomers on an `N × N` grid
